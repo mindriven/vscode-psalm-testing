@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<files psalm-version="5.6.0@e784128902dfe01d489c4123d69918a9f3c1eac5">
+  <file src="src/fileWithErrors.php">
+    <MixedAssignment>
+      <code>$a</code>
+    </MixedAssignment>
+    <UndefinedGlobalVariable>
+      <code>$something_that_does_not_exist</code>
+    </UndefinedGlobalVariable>
+    <UnusedVariable>
+      <code>$a</code>
+    </UnusedVariable>
+  </file>
+</files>
