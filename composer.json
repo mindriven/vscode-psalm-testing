@@ -1,5 +1,11 @@
 {
     "require-dev": {
-        "vimeo/psalm": "^5.6"
-    }
+        "vimeo/psalm": "dev-feature/upgrade-lsp-v5 as 5.6.0"
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/tm1000/psalm"
+        }
+    ]
 }

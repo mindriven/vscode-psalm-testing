@@ -1,0 +1,10 @@
+{
+    "psalm.psalmVersion": "5.6.0",
+    "psalm.psalmScriptArgs": [
+        "--clear-cache-on-boot",
+        "--use-baseline=baseline.xml",
+        "--on-change-debounce-ms=500",
+        "--show-diagnostic-warnings=false"
+    ],
+    "psalm.psalmScriptPath": "vendor/bin/psalm-language-server"
+}

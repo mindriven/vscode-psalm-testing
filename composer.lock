@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8f2c4b8e6dc3541f777e2a23fe386985",
+    "content-hash": "3ded4e05fd5e5d52fcfac128aeee2889",
     "packages": [],
     "packages-dev": [
         {
@@ -1897,16 +1897,16 @@
         },
         {
             "name": "vimeo/psalm",
-            "version": "5.6.0",
+            "version": "dev-feature/upgrade-lsp-v5",
             "source": {
                 "type": "git",
-                "url": "https://github.com/vimeo/psalm.git",
-                "reference": "e784128902dfe01d489c4123d69918a9f3c1eac5"
+                "url": "https://github.com/tm1000/psalm.git",
+                "reference": "27c0caf2fbeb5e35fe181d578a89db16a9b70c59"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vimeo/psalm/zipball/e784128902dfe01d489c4123d69918a9f3c1eac5",
-                "reference": "e784128902dfe01d489c4123d69918a9f3c1eac5",
+                "url": "https://api.github.com/repos/tm1000/psalm/zipball/27c0caf2fbeb5e35fe181d578a89db16a9b70c59",
+                "reference": "27c0caf2fbeb5e35fe181d578a89db16a9b70c59",
                 "shasum": ""
             },
             "require": {
@@ -1930,7 +1930,7 @@
                 "nikic/php-parser": "^4.13",
                 "php": "^7.4 || ~8.0.0 || ~8.1.0 || ~8.2.0",
                 "sebastian/diff": "^4.0 || ^5.0",
-                "spatie/array-to-xml": "^2.17.0",
+                "spatie/array-to-xml": "^2.17.0 || ^3.0",
                 "symfony/console": "^4.1.6 || ^5.0 || ^6.0",
                 "symfony/filesystem": "^5.4 || ^6.0"
             },
@@ -1938,6 +1938,7 @@
                 "psalm/psalm": "self.version"
             },
             "require-dev": {
+                "amphp/phpunit-util": "^2.0",
                 "bamarni/composer-bin-plugin": "^1.4",
                 "brianium/paratest": "^6.0",
                 "ext-curl": "*",
@@ -1946,7 +1947,7 @@
                 "php-parallel-lint/php-parallel-lint": "^1.2",
                 "phpstan/phpdoc-parser": "^1.6",
                 "phpunit/phpunit": "^9.5",
-                "psalm/plugin-mockery": "^1.1",
+                "psalm/plugin-mockery": "^1.1.0",
                 "psalm/plugin-phpunit": "^0.18",
                 "slevomat/coding-standard": "^8.4",
                 "squizlabs/php_codesniffer": "^3.6",
@@ -1978,7 +1979,45 @@
                     "Psalm\\": "src/Psalm/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "Psalm\\Tests\\": "tests/"
+                }
+            },
+            "scripts": {
+                "cs": [
+                    "phpcs -ps"
+                ],
+                "cs-fix": [
+                    "phpcbf -ps"
+                ],
+                "lint": [
+                    "parallel-lint ./src ./tests"
+                ],
+                "phpunit": [
+                    "Composer\\Config::disableProcessTimeout",
+                    "paratest --runner=WrapperRunner"
+                ],
+                "phpunit-std": [
+                    "Composer\\Config::disableProcessTimeout",
+                    "phpunit"
+                ],
+                "verify-callmap": [
+                    "phpunit tests/Internal/Codebase/InternalCallMapHandlerTest.php"
+                ],
+                "psalm": [
+                    "@php ./psalm"
+                ],
+                "psalm-set-baseline": [
+                    "@php ./psalm --set-baseline=psalm-baseline.xml"
+                ],
+                "tests": [
+                    "@lint",
+                    "@cs",
+                    "@psalm",
+                    "@phpunit"
+                ]
+            },
             "license": [
                 "MIT"
             ],
@@ -1994,10 +2033,9 @@
                 "php"
             ],
             "support": {
-                "issues": "https://github.com/vimeo/psalm/issues",
-                "source": "https://github.com/vimeo/psalm/tree/5.6.0"
+                "source": "https://github.com/tm1000/psalm/tree/feature/upgrade-lsp-v5"
             },
-            "time": "2023-01-23T20:32:47+00:00"
+            "time": "2023-01-25T18:13:27+00:00"
         },
         {
             "name": "webmozart/assert",
@@ -2058,9 +2096,18 @@
             "time": "2022-06-03T18:03:27+00:00"
         }
     ],
-    "aliases": [],
+    "aliases": [
+        {
+            "package": "vimeo/psalm",
+            "version": "dev-feature/upgrade-lsp-v5",
+            "alias": "5.6.0",
+            "alias_normalized": "5.6.0.0"
+        }
+    ],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "vimeo/psalm": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
