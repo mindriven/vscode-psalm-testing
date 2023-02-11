@@ -1,6 +1,10 @@
 <?xml version="1.0"?>
-<psalm errorLevel="1" errorBaseline="baseline.xml">
+<psalm autoloader="etc/autoloader.php">
     <projectFiles>
         <directory name="src" />
     </projectFiles>
+    <globals>
+        <var name="_SERVER"
+            type="array{BASE_PATH:'/home/kamil/vscode-psalm-testing'}" />
+    </globals>
 </psalm>
